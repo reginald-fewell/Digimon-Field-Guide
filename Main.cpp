@@ -123,8 +123,10 @@ void Detele(Statement* smt,Connection* con) {
     cout << "Enter the delete condtion(name of the column)" << endl;
     cin >> column;
     cout << "Enter the name of the element you with to delete." << endl;
-    cin >> row;
-    try { smt->executeUpdate("DELETE FROM " + tab + " WHERE " + column + " = " + row +";"); }
+     cin.clear();
+     cin.ignore(256, '\n');
+     getline(cin, row);
+    try { smt->executeUpdate("DELETE FROM " + tab + " WHERE " + column + " = '" + row +"';"); }
     catch (SQLException& e) { cerr << "SQL Exception: " << e.what() << endl; }
     
 }//Name: Update Rows
